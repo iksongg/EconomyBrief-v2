@@ -24,12 +24,12 @@
 | 목적 | 포트폴리오용 와이어프레임 (피그마 디자인의 HTML 구현) |
 | 기술 스택 | 순수 HTML / CSS / JavaScript, 빌드 단계 없음, `package.json` 없음 |
 | 화면 구조 | `.device` 프레임, **최대 너비 402px** 한 컬럼, 데스크톱에서는 가운데 정렬 |
-| 데이터 | `data/news.json` + `assets/js/news-data-source.js` (고정 목업 데이터) |
+| 데이터 | `assets/js/news-data-source.js` (고정 목업 데이터, 실제 사용 원본). `data/news.json`은 코드에서 읽지 않는 예전 사본 |
 | AI 기능 | 실제 AI 호출 없음. 미리 작성된 요약/심층분석 문장을 표시하는 방식 |
 | 사용자 데이터 저장 | `localStorage` / `sessionStorage` (서버 없음) |
 | 기존 테스트 | `tests/app-state.test.js`, `tests/interaction-fixes.test.js` (Node 내장 `assert`) |
 | 디자인 기준 문서 | `md/design-system/*.md` (색상, 타이포, 접근성, 빈/오류 상태 등) |
-| 설계/계획 문서 | `md/specs/`, `md/plans/` |
+| 설계/계획 문서 | `md/PLANNING.md` (역기획서: 화면 목록, 흐름, 토큰 정책, 알려진 차이 G-01~G-12), `md/specs/`, `md/plans/` |
 
 ### 1.1 해당 없음(N/A) 항목
 
@@ -77,15 +77,17 @@ Medium·Low는 최종 판정을 막지 않지만, 보고서에 빠짐없이 기�
 
 ## 3. 테스트 환경 준비
 
-### 3.1 로컬 서버로 실행 (필수)
+### 3.1 로컬 서버로 실행 (기본)
 
-`assets/js/news-data.js`가 `fetch('data/news.json')`을 사용하므로, **HTML 파일을 직접 열면(file://) 데이터가 로드되지 않는다.** 반드시 로컬 서버로 실행한다.
+기사 데이터는 `assets/js/news-data-source.js`를 `<script>`로 불러오기 때문에 HTML 파일을 직접 열어도(file://) 동작하도록 만들어져 있다. 그래도 공유 버튼의 클립보드 복사처럼 보안 환경(https 또는 localhost)이 필요한 기능이 있고 실제 배포 환경과 비슷하게 맞추기 위해, **기본 검사는 로컬 서버에서 한다.**
 
 ```bash
 python3 -m http.server 8000
 ```
 
 접속 주소: `http://localhost:8000/index.html`
+
+추가로 핵심 흐름 1개(시나리오 A)는 **file://로 직접 열어서도** 동작하는지 확인한다.
 
 ### 3.2 브라우저 자동화
 
@@ -172,7 +174,8 @@ QA 시작 시 `ls *.html`로 목록을 다시 수집해 아래 표와 비교한�
 
 - [ ] `git log -1`로 검사 대상 커밋을 기록
 - [ ] 4.1의 페이지 목록과 4.2의 저장소 키가 현재 코드와 일치하는지 확인
-- [ ] `md/specs/`, `md/plans/`에서 최근 변경 의도를 읽고, 의도된 동작을 결함으로 판정하지 않도록 한다
+- [ ] `md/PLANNING.md`, `md/specs/`, `md/plans/`에서 기획·변경 의도를 읽고, 의도된 동작을 결함으로 판정하지 않도록 한다
+- [ ] `md/PLANNING.md` 9장의 알려진 차이(G-01~G-12)는 새 이슈로 중복 등록하지 않고, 보고서에 "알려진 차이"로 상태만 기록한다
 
 ### STEP 2. 정적 검사
 
@@ -190,8 +193,9 @@ QA 시작 시 `ls *.html`로 목록을 다시 수집해 아래 표와 비교한�
 
 - [ ] HTML 인라인 `<script>`의 문법 오류 확인
 - [ ] 모든 HTML의 `src`/`href` 로컬 경로가 실제 파일로 존재하는지 확인 (이미지, CSS, JS, 페이지 링크)
-- [ ] `data/news.json`의 기사 이미지·로고 경로가 모두 존재하는지 확인
-- [ ] **데이터 동기화:** `data/news.json`과 `assets/js/news-data-source.js`의 기사 목록(id, 제목, 개수)이 일치하는지 확인
+- [ ] `assets/js/news-data-source.js`의 기사 이미지·로고 경로가 모두 존재하는지 확인 (없으면 플레이스홀더가 표시되는지)
+- [ ] HTML에 하드코딩된 `article.html?id=...` 링크의 id가 모두 `news-data-source.js`에 존재하는지 확인
+- [ ] **데이터 동기화:** `data/news.json`과 `news-data-source.js`의 기사 목록(id, 개수, 필드)을 비교한다. `news.json`은 현재 코드에서 읽지 않으므로 차이는 **Low**로 기록한다 (2026-11-18 기준: news.json 34개 / source 48개, `md/PLANNING.md` G-01 참고)
 - [ ] 페이지 안의 중복 `id`
 - [ ] 디자인 토큰 밖의 하드코딩 색상은 `md/design-system/OFF-PALETTE.md`와 비교해서 허용된 예외인지 확인
 
