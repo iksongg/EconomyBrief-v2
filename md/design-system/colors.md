@@ -5,7 +5,7 @@ Source: Figma "디자인시스템" (Design System) board, section **02. Color**.
 > 이코노미 브리프가 사용하는 컬러 토큰입니다. 모든 값은 Figma 변수로 관리되며, 화면에서는 HEX가 아니라 변수 이름으로 참조합니다. Light/Dark 두 모드 값을 함께 가집니다.
 > (These are the color tokens EconomyBrief uses. All values are managed as Figma variables and screens reference the variable name, not the raw HEX. Each token also carries a Light/Dark mode value.)
 
-CSS custom properties: [`../tokens/colors.css`](../tokens/colors.css)
+CSS custom properties: [`../tokens/colors.css`](../../design-system/tokens/colors.css)
 
 **Note on Dark mode:** the Figma board states each token has both Light and Dark values, but only the Light HEX is exposed as text content on the board — Dark values live in Figma variables and were not retrievable from this pass. Pull them directly from Figma if Dark mode is implemented.
 

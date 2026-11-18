@@ -1,7 +1,7 @@
 /*
   EconomyBrief — icon component.
   Source: Figma "아이콘 컴퍼넌트" board (node 5118:75350), cross-referenced with
-  design-system/iconography/iconography.md ("디자인시스템" > 05. Iconography).
+  md/design-system/iconography.md ("디자인시스템" > 05. Iconography).
 
   Most of the icons in the Figma file are instances of Google's "Material Symbols"
   icon library, not custom artwork. icon(name, opts) renders those as live glyphs

@@ -3,7 +3,7 @@
 Source: Figma "디자인시스템" (Design System) board, section **11. Accessibility**.
 
 > 색 대비는 Color 보드에 있습니다. 여기는 터치 영역·포커스·스크린리더 규칙입니다.
-> (Color contrast lives on the [Color](../colors/colors.md) board. This section covers touch targets, focus state, and screen reader rules.)
+> (Color contrast lives on the [Color](colors.md) board. This section covers touch targets, focus state, and screen reader rules.)
 
 ## Minimum Touch Target
 

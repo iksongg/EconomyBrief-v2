@@ -5,7 +5,7 @@ Source: Figma "디자인시스템" (Design System) board, section **04. Grid & L
 > 모든 화면은 402pt 폭 위에 4컬럼으로 놓입니다. 간격은 4의 배수만 사용하고, 그 사이 값은 만들지 않습니다.
 > (Every screen is laid out on a 402pt-wide, 4-column grid. Spacing only ever uses multiples of 4 — no in-between values.)
 
-CSS custom properties: [`../tokens/layout.css`](../tokens/layout.css)
+CSS custom properties: [`../tokens/layout.css`](../../design-system/tokens/layout.css)
 
 ## Screen Grid
 

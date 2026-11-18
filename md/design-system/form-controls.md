@@ -3,7 +3,7 @@
 Source: Figma "디자인시스템" (Design System) board, section **10. Form Controls**.
 
 > 토글·체크박스·라디오·프로그레스바입니다. 버튼·입력창은 Components 보드를 참고하세요.
-> (Toggle, checkbox, radio, and progress bar. See the [Components](../components/components.md) board for buttons and inputs.)
+> (Toggle, checkbox, radio, and progress bar. See the [Components](components.md) board for buttons and inputs.)
 
 ## Toggle
 

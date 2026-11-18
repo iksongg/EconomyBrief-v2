@@ -136,7 +136,7 @@ Expected: PASS.
 ### Task 5: Verify the deliverable
 
 **Files:**
-- Modify: `docs/superpowers/plans/2026-08-06-mobile-web-app.md`
+- Modify: `md/plans/2026-08-06-mobile-web-app.md`
 
 - [x] **Step 1: Run application behavior tests**
 

@@ -5,7 +5,7 @@ Source: Figma "디자인시스템" (Design System) board, section **03. Typograp
 > Pretendard 한 벌로 전체 화면을 구성합니다. 아래 13개 스타일 외의 크기는 사용하지 않습니다.
 > (The entire product is built on a single typeface, Pretendard. No size outside the 13 styles below is used.)
 
-CSS classes: [`../tokens/typography.css`](../tokens/typography.css)
+CSS classes: [`../tokens/typography.css`](../../design-system/tokens/typography.css)
 
 - Typeface: Pretendard (single typeface)
 - Weights: 4 — Regular 400, Medium 500, SemiBold 600, Bold 700
